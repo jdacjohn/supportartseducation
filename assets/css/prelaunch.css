@@ -1,0 +1,232 @@
+/* @group tags */
+
+html
+	{
+	overflow-y:scroll;
+	-webkit-font-smoothing:antialiased;
+	font:62.5% "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align:center;
+	margin:0;
+	}
+body
+	{
+	text-align:center;
+	color:#777;
+	font-size:1.3em;
+	line-height:1.5em;
+	position:relative;
+	background: #555 url(/assets/img/bg-body.gif);
+	margin: 0;
+	}
+::-moz-selection
+	{
+	background:#900;
+	color:#fff;
+	text-shadow:none;
+	}
+::selection
+	{
+	background:#900;
+	color:#fff;
+	text-shadow:none;
+	}
+hr
+	{
+	border:none;
+	height:0px;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #fff;
+	margin:25px auto;
+	width: 100%;
+	}
+h1, h2, h3, h4, h5, h6
+	{
+	text-rendering:optimizeLegibility;
+	color:#555;
+	text-shadow:#fff 1px 1px 0;
+	margin: 20px;
+	padding: 0;
+	line-height: 115%;
+	text-align: center;
+	}
+h1
+	{
+	font-size:2em;
+	}
+h2
+	{
+	font-size:1.5em;
+	padding-bottom: 5px;
+	}
+h3
+	{
+	font-size:1.25em;
+	}
+h4
+	{
+	font-size:1.125em;
+	}
+h5
+	{
+	font-size:1em;
+	}
+h6
+	{
+	font-size:.75em;
+	}
+a:link, a:visited
+	{
+	color:#555;
+	text-decoration:none;
+	font-weight:bold;
+	text-shadow:#fff 0 1px 0;
+	}
+a:hover, a:focus
+	{
+	color:#700;
+	text-decoration:none;
+	}
+a:active
+	{
+	color:#700;
+	text-decoration:none;
+	}
+
+/* @end */
+
+/* @group layout */
+	
+	.container
+		{
+		width: 960px;
+		text-align: left;
+		margin: 0 auto;
+		padding: 0 0 10px 0;
+		background:#eee;
+		-webkit-box-shadow:0 0 25px rgba(0, 0, 0, .8);
+		-moz-box-shadow:0 0 25px rgba(0, 0, 0, .8);
+		-o-box-shadow:0 0 25px rgba(0, 0, 0, .8);
+		box-shadow:0 0 25px rgba(0, 0, 0, .8);
+		}
+	
+	/* @group head */
+		
+		.head
+			{
+			background: #000;
+			text-align: right;
+			padding: 5px 15px;
+			}
+		.head a.facebook
+			{
+			display: inline-block;
+			width: 35px;
+			height: 40px;
+			background: url(../img/nav-facebook.png) no-repeat center center;
+			margin: 0 5px 0 5px;
+			}
+		.head a.facebook, .head a.twitter
+			{
+			filter:alpha(opacity=50);
+			opacity:0.5;
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+			}
+		.head a.facebook:hover, .head a.twitter:hover
+			{
+			z-index:99;
+			filter:alpha(opacity=100);
+			opacity:1;
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			}
+		.head a.twitter
+			{
+			display: inline-block;
+			width: 35px;
+			height: 40px;
+			background: url(../img/nav-twitter.png) no-repeat center center;
+			}
+		
+		/* @end */
+	/* @group form */
+	
+	form
+		{
+		width: 400px;
+		border: none;
+		margin: 25px auto;
+		}
+	fieldset
+		{
+		border: none;
+		margin: 15px 0px 5px 0px;
+		width: 400px;
+		padding: 0px;
+		border: none;
+		text-align: left;
+		}
+	legend
+		{
+		color: #888;
+		font-size: 12px;
+		font-weight: 200;
+		}
+	fieldset ul
+		{
+		margin: 0px;
+		padding: 0px;
+		}
+	fieldset li
+		{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		}
+	input, textarea, select
+		{
+		margin: 5px 0px;
+		padding: 2px 0px 1px 0px;
+		width: 390px;
+		color: #555;
+		border: 2px solid #fff;
+		-moz-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		-webkit-box-shadow: 2px 3px 5px #ccc;
+		-moz-box-shadow: 1px 1px 5px #ccc;
+		box-shadow: 1px 1px 5px #ccc;
+		font: normal normal 12px Arial, Helvetica, Geneva, sans-serif;
+		background: #ddd;
+		}
+	input:focus, textarea:focus, select:focus, input:hover, textarea:hover, select:hover
+		{
+		color: #fff;
+		border: 2px solid #888;
+		background: #888;
+		}
+	
+	/* @end */
+	
+	.footer
+			{
+			margin: 5px 0;
+			text-align: center;
+			font-size: .9em;
+			color: #aaa;
+			}	
+		
+		.error
+		{
+		text-transform: uppercase;
+		}
+	.error:after
+		{
+		content: "please fill out correctly";
+		background-color: #900;
+		color: #fff;
+		margin-left: 5px;
+		padding: 0 2px;
+		text-shadow:1px 1px 2px #700;
+		}
+	
+	/* @end */
+	
+	

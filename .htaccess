@@ -1,0 +1,82 @@
+Options +FollowSymlinks
+DirectorySlash Off
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,NC,L]
+
+RewriteCond %{HTTP_HOST} !www.supportartseducation.com$ [NC]
+RewriteCond %{HTTP_HOST} ^(www.)?([a-z0-9-]+).supportartseducation.com [NC]
+RewriteRule (.*) vip.php?vip=%2 [NC,QSA]
+
+DirectoryIndex main.php
+RewriteRule ^prelaunch/?$ main.php?prelaunch [NC]
+
+#Card, Company, Category...
+RewriteRule ^arts/?$ co_art.php [L]
+RewriteRule ^arts/([A-Za-z0-9-]+)/?$ co_art.php?art=$1 [L]
+RewriteRule ^arts/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ co_art.php?art=$1&pg=$2 [L]
+RewriteRule ^business/?$ co_bus.php [L]
+RewriteRule ^business/([A-Za-z0-9-]+)/?$ co_bus.php?bus=$1 [L]
+RewriteRule ^business/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ co_bus.php?bus=$1&pg=$2 [L]
+RewriteRule ^category/?$ co_cat.php [L]
+RewriteRule ^category/([A-Za-z0-9-]+)/?$ co_cat.php?cat=$1 [L]
+RewriteRule ^category/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ co_cat.php?cat=$1&pg=$2 [L]
+RewriteRule ^community/?$ co_com.php [L]
+RewriteRule ^community/([A-Za-z0-9-]+)/?$ co_com.php?com=$1 [L]
+RewriteRule ^community/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ co_com.php?com=$1&pg=$2 [L]
+RewriteRule ^destination/?$ co_dest.php [L]
+RewriteRule ^destination/([A-Za-z0-9-]+)/?$ co_dest.php/?dest=$1 [L]
+RewriteRule ^destination/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ co_dest.php?dest=$1&pg=$2 [L]
+RewriteRule ^spotlights/?$ co_all.php [L]
+RewriteRule ^spotlights/([A-Za-z0-9-]+)/?$ co_all.php/?bus=$1 [L]
+RewriteRule ^spotlights/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$ co_all.php/?bus=$1&pg=$2 [L]
+RewriteRule ^featured/?$ co_feat.php [NC]
+RewriteRule ^featured/([A-Za-z0-9\.@]+)/?$ co_feat.php?pg=$1 [NC]
+RewriteRule ^sponsors/?$ co_spons.php [NC]
+RewriteRule ^sponsors/([A-Za-z0-9\.@]+)/?$ co_spons.php?pg=$1 [NC]
+RewriteRule ^company/?$ co.php [L]
+RewriteRule ^company/([A-Za-z0-9-]+)/?$ co.php?co=$1 [L]
+
+#Panel, etc.
+RewriteRule ^panel/?$ panel/main.php [NC] # Control Panel
+RewriteRule ^shop/?$ panel/main.php [NC] # Shop Directory
+RewriteRule ^shop/bizcard/?$ shop.php?page=shopbizcard [NC] # Shop Bizcard
+RewriteRule ^shop/video/?$ shop.php?page=shopvideo [NC] # Shop Video
+RewriteRule ^shop/sponsor/?$ shop.php?page=shopsponsor [NC] # Shop Video
+RewriteRule ^profile/([A-Za-z0-9\@\_\-\.]+)/?$ panel/profile.php?profile=$1 [NC]
+RewriteRule ^pages/?$ main.php [NC] # Shop Directory
+RewriteRule ^pages/([A-Za-z0-9\@\_\-\.]+)/?$ page.php?page=$1 [NC]
+RewriteRule ^pages/([A-Za-z0-9\@\_\-\.]+)/([A-Za-z0-9\.@]+)/?$ page.php?page=$1&pg=$2 [NC]
+RewriteRule ^accessdenied/?$ core/template/-.php?accessdenied [NC]
+
+# Removes PHP extension & force a trailing slash to be added
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/$ /$1.php
+RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+RewriteRule (.*)$ /$1/ [R=301,L]
+
+# Errors
+ErrorDocument 404 /core/template/-.php?404
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+php_flag  log_errors on
+php_value error_reporting 2047
+php_value error_log  PHP_errors.log
+
+IndexIgnore */*
+
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+<Files PHP_errors.log>
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
